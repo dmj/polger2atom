@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ x$1 -eq x ]]; then
+if [ "x$1" = "x" ]; then
     echo "Syntax: $0 <outfile>"
     exit 1
 fi
