@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [[ x$1 -eq x ]]; then
+    echo "Syntax: $0 <outfile>"
+    exit 1
+fi
+
+OUTFILE=$1
+
+CALABASH=$(which calabash 2>/dev/null) || exit 1
+CURL=$(which curl 2>/dev/null) || exit 1
+SOUP=$(which tagsoup 2>/dev/null) || exit 1
+
+${CURL} https://hab.bodleian.ox.ac.uk/en/ | ${SOUP} | ${CALABASH} -o ${OUTFILE} src/main/xproc/polger2atom.xpl
